@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="../favicon.png" />
+    <link rel="stylesheet" href="../style.css" />
+    <title>Star Store</title>
+  </head>
+  <body>
+    <div class="navHeader">
+      <h1><a href="/">STAR SToRE</a></h1>
+    </div>
+    <div class="pageHeader"></div>
+    <div class="categoriesBar">
+      <h2 class="categoriesHeader">Categories</h2>
+      <%categories.forEach((category)=>{%>
+      <div class="categories">
+        <h3>
+          <a href="/<%=category.table_name%>"><%=category.table_name%></a>
+        </h3>
+        <a href="/<%=category.table_name%>/add"
+          ><button class="addCategory">+</button></a
+        >
+      </div>
+      <%});%>
+    </div>
+    <div class="addPage">
+      <h1>Add Movie :</h1>
+      <form method="POST" action="/movies/add">
+        <label for="movieName">Movie Name:</label><br />
+        <input type="text" id="movieName" name="movieName" /><br />
+        <label for="movieIMG">image url:</label><br />
+        <input type="text" id="movieIMG" name="movieIMG" /><br />
+        <input type="submit" value="Submit" />
+      </form>
+    </div>
+  </body>
+</html>

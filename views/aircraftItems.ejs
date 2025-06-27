@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="favicon.png" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Star Store</title>
+  </head>
+  <body>
+    <div class="navHeader">
+      <h1><a href="/">STAR SToRE</a></h1>
+    </div>
+    <div class="pageHeader"></div>
+    <div class="categoriesBar">
+      <h2 class="categoriesHeader">Categories</h2>
+      <%categories.forEach((category)=>{%>
+      <div class="categories">
+        <h3><a href="<%=category.table_name%>"><%=category.table_name%></a></h3>
+        <a href="/<%=category.table_name%>/add"
+          ><button class="addCategory">+</button></a
+        >
+      </div>
+      <%});%>
+    </div>
+    <div class="itemsPage">
+      <%aircrafts.forEach((aircraft,index)=>{%>
+      <div class="itemHolder">
+        <img src="<%=images[index].img%>" />
+        <div class="idkHolder">
+          <h3><%=aircraft.name%></h3>
+          <a href="/aircrafts/delete/<%=id[index].id%>"
+            ><button class="removeBtn">x</button></a
+          >
+        </div>
+      </div>
+      <%});%>
+    </div>
+  </body>
+</html>
