@@ -30,9 +30,22 @@ INSERT INTO movies(name,img) VALUES ('A new hope','https://lumiere-a.akamaihd.ne
 async function main() {
   const client = new Client({
     connectionString: process.env.DATABASE_URL,
+    ssl:{
+      rejectUnauthorized:false,
+    }
   });
-  await client.connect();
-  await client.query(SQL);
-  await client.end();
+  
+  try {
+    await client.connect();
+    console.log("Connected to DB!");
+
+    await client.query(SQL);
+    console.log("Tables and seed data created!");
+
+  } catch (err) {
+    console.error("Error:", err);
+  } finally {
+    await client.end();
+  }
 }
 main();
